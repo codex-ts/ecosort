@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EcoSort — AI Waste Segregation Assistant</title>
+  <meta name="description" content="EcoSort uses AI to tell you exactly which bin your waste belongs in, how to prepare it, and its environmental impact. SDG 12: Responsible Consumption & Production." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♻️</text></svg>" />
+</head>
+<body>
+  <!-- ============ HEADER ============ -->
+  <header class="site-header">
+    <div class="brand">
+      <span class="brand-mark">♻️</span>
+      <div>
+        <span class="brand-name">EcoSort</span>
+        <span class="brand-sub">AI Waste Segregation Assistant</span>
+      </div>
+    </div>
+    <div class="header-right">
+      <span class="sdg-chip">SDG 12 · Responsible Consumption</span>
+      <span id="modeBadge" class="mode-badge mode-demo" title="Click to learn about AI modes">Demo&nbsp;Mode</span>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="hero-text">
+      <p class="eyebrow">1M1B × IBM SkillsBuild × AICTE — AI for Sustainability</p>
+      <h1>Put waste in the <span class="grad">right bin</span>, every time.</h1>
+      <p class="lede">
+        Most people want to recycle correctly but guess wrong — and one wrong item can
+        contaminate an entire batch. Snap a photo or pick an item, and EcoSort's AI tells you the
+        correct bin, how to prepare it, and the impact you just made.
+      </p>
+      <div class="hero-stats">
+        <div><b>13</b><span>waste types</span></div>
+        <div><b>3-bin</b><span>SWM 2016 logic</span></div>
+        <div><b>0₹</b><span>runs offline</span></div>
+      </div>
+    </div>
+    <div class="hero-card" aria-hidden="true">
+      <div class="hc-row"><span class="hc-emoji">🧴</span><div><b>Plastic Bottle</b><small>Blue / Dry Waste</small></div><span class="hc-tag rec">RECYCLABLE</span></div>
+      <div class="hc-row"><span class="hc-emoji">🍎</span><div><b>Food Waste</b><small>Green / Wet Waste</small></div><span class="hc-tag com">COMPOST</span></div>
+      <div class="hc-row"><span class="hc-emoji">🔋</span><div><b>Battery</b><small>E-waste Drop-off</small></div><span class="hc-tag haz">HAZARDOUS</span></div>
+    </div>
+  </section>
+
+  <main class="container">
+    <!-- ============ CLASSIFIER ============ -->
+    <section id="classify" class="panel">
+      <div class="panel-head">
+        <h2>1 · Identify an item</h2>
+        <p>Upload a photo, or tap a common item to see the AI classification instantly.</p>
+      </div>
+
+      <div class="upload-zone" id="dropZone">
+        <input type="file" id="fileInput" accept="image/*" hidden />
+        <div class="uz-inner">
+          <div class="uz-icon">📷</div>
+          <p><b>Drop a photo here</b> or <button class="link-btn" id="browseBtn">browse</button></p>
+          <small id="uzHint">In Demo Mode the AI infers from the filename/sample. Add an API key for real vision analysis.</small>
+        </div>
+        <img id="preview" alt="preview" hidden />
+      </div>
+
+      <p class="quick-label">Or try a sample item:</p>
+      <div class="chips" id="sampleChips"><!-- injected --></div>
+    </section>
+
+    <!-- ============ RESULT ============ -->
+    <section id="resultPanel" class="panel result-panel" hidden>
+      <div class="panel-head"><h2>2 · AI Result</h2></div>
+      <div class="result-card">
+        <div class="rc-top">
+          <span class="rc-emoji" id="rEmoji">♻️</span>
+          <div class="rc-title">
+            <h3 id="rName">—</h3>
+            <p id="rCategory">—</p>
+          </div>
+          <span class="rc-verdict" id="rVerdict">—</span>
+        </div>
+
+        <div class="rc-bin" id="rBin">
+          <span class="rc-bin-dot" id="rBinDot"></span>
+          <div><small>Put it in</small><b id="rBinName">—</b></div>
+          <div class="rc-conf"><small>AI confidence</small><b id="rConf">—</b></div>
+        </div>
+
+        <div class="rc-grid">
+          <div class="rc-block">
+            <h4>🧼 How to prepare it</h4>
+            <ul id="rPrep"></ul>
+          </div>
+          <div class="rc-block">
+            <h4>🌍 Why it matters</h4>
+            <p id="rCo2"></p>
+            <p class="rc-decompose"><b>If landfilled:</b> <span id="rDecompose"></span></p>
+          </div>
+        </div>
+
+        <div class="rc-tip"><span>💡</span><p id="rTip"></p></div>
+        <p class="rc-source" id="rSource"></p>
+      </div>
+    </section>
+
+    <!-- ============ CHAT ============ -->
+    <section id="chat" class="panel">
+      <div class="panel-head">
+        <h2>3 · Ask the Recycling Assistant</h2>
+        <p>Conversational AI for the tricky stuff — "Is a greasy pizza box recyclable?", "What about old medicines?"</p>
+      </div>
+      <div class="chat-window" id="chatWindow">
+        <div class="msg bot">
+          <span class="msg-av">♻️</span>
+          <div class="msg-bubble">Hi! I'm your EcoSort assistant. Ask me about any item, local recycling rules, or how to reduce waste. Try the suggestions below 👇</div>
+        </div>
+      </div>
+      <div class="chat-suggest" id="chatSuggest">
+        <button>Is a greasy pizza box recyclable?</button>
+        <button>How do I dispose of old batteries?</button>
+        <button>What can I compost at home?</button>
+      </div>
+      <form class="chat-input" id="chatForm">
+        <input type="text" id="chatText" placeholder="Type your question…" autocomplete="off" />
+        <button type="submit" aria-label="Send">➤</button>
+      </form>
+    </section>
+
+    <!-- ============ IMPACT TRACKER ============ -->
+    <section class="panel impact-panel">
+      <div class="panel-head"><h2>Your session impact</h2><p>A small, honest nudge — every correctly-sorted item counts.</p></div>
+      <div class="impact-stats">
+        <div class="impact-stat"><b id="statItems">0</b><span>items sorted</span></div>
+        <div class="impact-stat"><b id="statRecycled">0</b><span>diverted from landfill</span></div>
+        <div class="impact-stat"><b id="statCo2">0.0 kg</b><span>est. CO₂ avoided</span></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ RESPONSIBLE AI ============ -->
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div>
+        <h3>Responsible AI</h3>
+        <ul>
+          <li><b>Transparency:</b> every result shows confidence + its source (knowledge base or model).</li>
+          <li><b>Fairness:</b> rules follow public SWM 2016 standards, not assumptions about users.</li>
+          <li><b>Privacy:</b> photos are processed in-browser in demo mode and never stored.</li>
+          <li><b>Honesty:</b> "conditional" items are flagged — we tell you to check locally.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>About</h3>
+        <p>EcoSort — AI for Sustainability Virtual Internship project.<br />
+        <b>Sirlapu Tanish</b>, GITAM University, Vizag.<br />
+        Primary SDG 12 · Secondary SDG 11 &amp; 13.</p>
+        <p class="disclaimer">Educational prototype. Disposal rules vary by municipality — always check local guidelines.</p>
+      </div>
+    </div>
+    <p class="copyright">Built with responsible AI for the planet. ♻️</p>
+  </footer>
+
+  <script src="js/knowledge.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
