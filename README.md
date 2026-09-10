@@ -106,15 +106,31 @@ design-thinking process, impact statement).
 
 ---
 
+## 🗺️ Pages
+
+| Page | What lives there |
+|---|---|
+| `index.html` | Home: hero, how-it-works, tricky items, quiz CTA, progress strip |
+| `classify.html` | Search, photo upload + camera, samples, AI result card |
+| `library.html` | Full 28-item searchable, filterable waste guide |
+| `bins.html` | 4-bin SWM 2016 guide with dos and don'ts |
+| `quiz.html` | 5-question quiz with persisted best score |
+| `impact.html` | Levels, equivalents, history, copy/download report |
+| `assistant.html` | Full-page recycling chat |
+| `about.html` | Problem, AI approach, responsible AI, team |
+
+Shared shell on every page: nav with active state, theme toggle, mode badge, footer. Impact history persists across pages on-device.
+
 ## 📁 Structure
 ```
-index.html         landing + classifier + library + bins + quiz + chat + impact UI
-css/styles.css     eco-themed styling + dark mode
+index.html + classify/library/bins/quiz/impact/assistant/about.html
+css/styles.css     eco-themed styling + dark mode + page sections
 js/knowledge.js    28-item knowledge base + BIN_GUIDE + QUIZ (powers demo mode)
-js/app.js          classifier, search, library, quiz, chat, impact with localStorage
+js/site.js         shared shell: nav, theme, mode badge, offline support
+js/app.js          page-routed modules: classify, library, quiz, chat, impact
 server.js          optional Node backend for real Claude AI (rate-limited, validated)
 manifest.json      PWA manifest
-sw.js              offline cache for static assets
+sw.js              offline cache for all pages and assets
 REVIEW_GUIDE.md    5-minute review demo script
 docs/              screenshots
 SUBMISSION.md      formal internship deliverable

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Waste Library — EcoSort</title>
+  <meta name="description" content="Browse all 28 waste types EcoSort knows, with bins, prep steps, and impact." />
+  <meta name="theme-color" content="#0f5c2c" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♻️</text></svg>" />
+</head>
+<body data-page="library">
+  <header class="site-header">
+    <a class="brand brand-link" href="index.html">
+      <span class="brand-mark">♻️</span>
+      <span><span class="brand-name">EcoSort</span><span class="brand-sub">AI Waste Segregation Assistant</span></span>
+    </a>
+    <nav class="topnav" aria-label="Sections">
+      <a data-nav="home" href="index.html">Home</a>
+      <a data-nav="classify" href="classify.html">Classify</a>
+      <a data-nav="library" href="library.html">Library</a>
+      <a data-nav="bins" href="bins.html">Bins</a>
+      <a data-nav="quiz" href="quiz.html">Quiz</a>
+      <a data-nav="impact" href="impact.html">Impact</a>
+      <a data-nav="assistant" href="assistant.html">Assistant</a>
+      <a data-nav="about" href="about.html">About</a>
+    </nav>
+    <div class="header-right">
+      <span class="sdg-chip">SDG 12 · Responsible Consumption</span>
+      <button id="themeBtn" class="icon-btn" title="Toggle dark mode" aria-label="Toggle dark mode">🌙</button>
+      <span id="modeBadge" class="mode-badge mode-demo" title="Click to learn about AI modes">Demo&nbsp;Mode</span>
+    </div>
+  </header>
+
+  <main class="container page">
+    <p class="crumbs"><a href="index.html">Home</a> / Library</p>
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Waste library <span id="libCount" class="count-pill">28 items</span></h2>
+        <p>Every item EcoSort knows. Tap any card for the full bin, prep, and impact on the Classify page.</p>
+      </div>
+      <div class="search-row">
+        <input id="searchInput" type="search" placeholder="Search waste — try 'battery', 'pizza', 'milk pouch', 'flowers'…" aria-label="Search waste items" />
+        <select id="filterVerdict" aria-label="Filter by outcome">
+          <option value="all">All outcomes</option>
+          <option value="yes">Recyclable</option>
+          <option value="compost">Compostable</option>
+          <option value="reuse">Reuse</option>
+          <option value="special">Special disposal</option>
+          <option value="conditional">Check locally</option>
+          <option value="no">Not recyclable</option>
+        </select>
+      </div>
+      <div id="libraryGrid" class="lib-grid"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div>
+        <h3>EcoSort</h3>
+        <p>AI for Sustainability Virtual Internship.<br /><b>Sirlapu Tanish</b>, GITAM University, Vizag.</p>
+        <nav class="footnav" aria-label="Footer">
+          <a href="index.html">Home</a><a href="classify.html">Classify</a><a href="bins.html">Bins</a><a href="quiz.html">Quiz</a><a href="impact.html">Impact</a><a href="assistant.html">Assistant</a><a href="about.html">About</a>
+        </nav>
+      </div>
+      <div>
+        <h3>Bin logic</h3>
+        <p>Green wet, Blue dry, Red hazardous and e-waste, Black general. Based on India's Solid Waste Management Rules 2016.</p>
+      </div>
+    </div>
+    <p class="copyright">Built with responsible AI for the planet. ♻️</p>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="js/knowledge.js"></script>
+  <script src="js/site.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

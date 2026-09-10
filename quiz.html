@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz — EcoSort</title>
+  <meta name="description" content="A 1-minute quiz on tricky waste items. Perfect warm-up before sorting." />
+  <meta name="theme-color" content="#0f5c2c" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♻️</text></svg>" />
+</head>
+<body data-page="quiz">
+  <header class="site-header">
+    <a class="brand brand-link" href="index.html">
+      <span class="brand-mark">♻️</span>
+      <span><span class="brand-name">EcoSort</span><span class="brand-sub">AI Waste Segregation Assistant</span></span>
+    </a>
+    <nav class="topnav" aria-label="Sections">
+      <a data-nav="home" href="index.html">Home</a>
+      <a data-nav="classify" href="classify.html">Classify</a>
+      <a data-nav="library" href="library.html">Library</a>
+      <a data-nav="bins" href="bins.html">Bins</a>
+      <a data-nav="quiz" href="quiz.html">Quiz</a>
+      <a data-nav="impact" href="impact.html">Impact</a>
+      <a data-nav="assistant" href="assistant.html">Assistant</a>
+      <a data-nav="about" href="about.html">About</a>
+    </nav>
+    <div class="header-right">
+      <span class="sdg-chip">SDG 12 · Responsible Consumption</span>
+      <button id="themeBtn" class="icon-btn" title="Toggle dark mode" aria-label="Toggle dark mode">🌙</button>
+      <span id="modeBadge" class="mode-badge mode-demo" title="Click to learn about AI modes">Demo&nbsp;Mode</span>
+    </div>
+  </header>
+
+  <main class="container page">
+    <p class="crumbs"><a href="index.html">Home</a> / Quiz</p>
+    <section class="panel">
+      <div class="panel-head">
+        <h2>1-minute quiz — test yourself <span id="quizBest" class="count-pill"></span></h2>
+        <p>Five tricky items reviewers always ask about. Your best score is saved on this device.</p>
+      </div>
+      <div id="quizBox">
+        <div id="quizQ" class="quiz-q">Press Start to begin.</div>
+        <div id="quizOpts" class="quiz-opts"></div>
+        <div id="quizWhy" class="quiz-why"></div>
+        <div class="quiz-row">
+          <button id="quizStart" class="btn primary small">Start quiz</button>
+          <span id="quizScore" class="quiz-score"></span>
+          <a href="library.html" class="link-btn">study the library first</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div>
+        <h3>EcoSort</h3>
+        <p>AI for Sustainability Virtual Internship.<br /><b>Sirlapu Tanish</b>, GITAM University, Vizag.</p>
+        <nav class="footnav" aria-label="Footer">
+          <a href="index.html">Home</a><a href="classify.html">Classify</a><a href="library.html">Library</a><a href="bins.html">Bins</a><a href="impact.html">Impact</a><a href="assistant.html">Assistant</a><a href="about.html">About</a>
+        </nav>
+      </div>
+      <div>
+        <h3>Tip</h3>
+        <p>Run the quiz live in reviews — it takes sixty seconds and proves the knowledge base covers edge cases.</p>
+      </div>
+    </div>
+    <p class="copyright">Built with responsible AI for the planet. ♻️</p>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="js/knowledge.js"></script>
+  <script src="js/site.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
