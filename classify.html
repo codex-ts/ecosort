@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Classify — EcoSort</title>
+  <meta name="description" content="Identify any waste item: search, snap a photo, get the right bin, prep steps, and impact." />
+  <meta name="theme-color" content="#0f5c2c" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♻️</text></svg>" />
+</head>
+<body data-page="classify">
+  <header class="site-header">
+    <a class="brand brand-link" href="index.html">
+      <span class="brand-mark">♻️</span>
+      <span><span class="brand-name">EcoSort</span><span class="brand-sub">AI Waste Segregation Assistant</span></span>
+    </a>
+    <nav class="topnav" aria-label="Sections">
+      <a data-nav="home" href="index.html">Home</a>
+      <a data-nav="classify" href="classify.html">Classify</a>
+      <a data-nav="library" href="library.html">Library</a>
+      <a data-nav="bins" href="bins.html">Bins</a>
+      <a data-nav="quiz" href="quiz.html">Quiz</a>
+      <a data-nav="impact" href="impact.html">Impact</a>
+      <a data-nav="assistant" href="assistant.html">Assistant</a>
+      <a data-nav="about" href="about.html">About</a>
+    </nav>
+    <div class="header-right">
+      <span class="sdg-chip">SDG 12 · Responsible Consumption</span>
+      <button id="themeBtn" class="icon-btn" title="Toggle dark mode" aria-label="Toggle dark mode">🌙</button>
+      <span id="modeBadge" class="mode-badge mode-demo" title="Click to learn about AI modes">Demo&nbsp;Mode</span>
+    </div>
+  </header>
+
+  <main class="container page">
+    <p class="crumbs"><a href="index.html">Home</a> / Classify</p>
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Identify an item</h2>
+        <p>Search by name, upload a photo, or tap a sample. Demo mode matches by keyword. Live AI sees the photo.</p>
+      </div>
+      <div class="search-row">
+        <input id="qInput" type="search" placeholder="Type an item — 'greasy pizza box', 'AA battery', 'milk pouch'…" aria-label="Quick search" />
+        <button id="qGo" class="btn primary">Sort it</button>
+      </div>
+      <p class="quick-label">Prefer browsing? <a href="library.html">Open the 28-item library →</a></p>
+      <div class="upload-zone" id="dropZone">
+        <input type="file" id="fileInput" accept="image/*" hidden />
+        <input type="file" id="cameraInput" accept="image/*" capture="environment" hidden />
+        <div class="uz-inner">
+          <div class="uz-icon">📷</div>
+          <p><b>Drop a photo here</b> or <button class="link-btn" id="browseBtn">browse</button> · <button class="link-btn" id="cameraBtn">camera</button></p>
+          <small id="uzHint">In Demo Mode the AI infers from the filename. Add an API key for real vision analysis.</small>
+        </div>
+        <img id="preview" alt="preview" hidden />
+      </div>
+      <p class="quick-label">Or try a sample item:</p>
+      <div class="chips" id="sampleChips"></div>
+    </section>
+
+    <section id="resultPanel" class="panel result-panel" hidden>
+      <div class="panel-head"><h2>AI Result</h2></div>
+      <div class="result-card">
+        <div class="rc-top">
+          <span class="rc-emoji" id="rEmoji">♻️</span>
+          <div class="rc-title"><h3 id="rName">—</h3><p id="rCategory">—</p></div>
+          <span class="rc-verdict" id="rVerdict">—</span>
+        </div>
+        <div class="rc-bin" id="rBin">
+          <span class="rc-bin-dot" id="rBinDot"></span>
+          <div><small>Put it in</small><b id="rBinName">—</b></div>
+          <div class="rc-conf"><small>AI confidence</small><b id="rConf">—</b></div>
+        </div>
+        <div class="rc-grid">
+          <div class="rc-block"><h4>How to prepare it</h4><ul id="rPrep"></ul></div>
+          <div class="rc-block"><h4>Why it matters</h4><p id="rCo2"></p><p class="rc-decompose"><b>If landfilled:</b> <span id="rDecompose"></span></p></div>
+        </div>
+        <div class="rc-tip"><span>💡</span><p id="rTip"></p></div>
+        <div class="rc-actions">
+          <button id="speakBtn" class="btn small">🔊 Listen</button>
+          <button id="copyBtn" class="btn small ghost">Copy result</button>
+          <button id="wrongBtn" class="btn small ghost">Report wrong?</button>
+          <a class="btn small ghost" href="impact.html">See my impact →</a>
+        </div>
+        <p class="rc-source" id="rSource"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div>
+        <h3>EcoSort</h3>
+        <p>AI for Sustainability Virtual Internship.<br /><b>Sirlapu Tanish</b>, GITAM University, Vizag.</p>
+        <nav class="footnav" aria-label="Footer">
+          <a href="index.html">Home</a><a href="library.html">Library</a><a href="bins.html">Bins</a><a href="quiz.html">Quiz</a><a href="impact.html">Impact</a><a href="assistant.html">Assistant</a><a href="about.html">About</a>
+        </nav>
+        <p class="disclaimer">Educational prototype. Rules vary by municipality — always check local guidelines.</p>
+      </div>
+      <div>
+        <h3>Responsible AI</h3>
+        <ul>
+          <li><b>Transparency:</b> every result shows confidence and its source.</li>
+          <li><b>Privacy:</b> demo photos stay in-browser, history stays on-device.</li>
+          <li><b>Honesty:</b> conditional items say check locally.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="copyright">Built with responsible AI for the planet. ♻️</p>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="js/knowledge.js"></script>
+  <script src="js/site.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

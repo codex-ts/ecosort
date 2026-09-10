@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — EcoSort</title>
+  <meta name="description" content="Problem, AI approach, responsible AI, and team behind EcoSort." />
+  <meta name="theme-color" content="#0f5c2c" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♻️</text></svg>" />
+</head>
+<body data-page="about">
+  <header class="site-header">
+    <a class="brand brand-link" href="index.html">
+      <span class="brand-mark">♻️</span>
+      <span><span class="brand-name">EcoSort</span><span class="brand-sub">AI Waste Segregation Assistant</span></span>
+    </a>
+    <nav class="topnav" aria-label="Sections">
+      <a data-nav="home" href="index.html">Home</a>
+      <a data-nav="classify" href="classify.html">Classify</a>
+      <a data-nav="library" href="library.html">Library</a>
+      <a data-nav="bins" href="bins.html">Bins</a>
+      <a data-nav="quiz" href="quiz.html">Quiz</a>
+      <a data-nav="impact" href="impact.html">Impact</a>
+      <a data-nav="assistant" href="assistant.html">Assistant</a>
+      <a data-nav="about" href="about.html">About</a>
+    </nav>
+    <div class="header-right">
+      <span class="sdg-chip">SDG 12 · Responsible Consumption</span>
+      <button id="themeBtn" class="icon-btn" title="Toggle dark mode" aria-label="Toggle dark mode">🌙</button>
+      <span id="modeBadge" class="mode-badge mode-demo" title="Click to learn about AI modes">Demo&nbsp;Mode</span>
+    </div>
+  </header>
+
+  <main class="container page">
+    <p class="crumbs"><a href="index.html">Home</a> / About</p>
+    <section class="panel">
+      <div class="panel-head"><h2>The problem</h2></div>
+      <p class="prose">Source segregation fails not because people don't care, but because they don't know where each item goes. A greasy pizza box is half-recyclable, a battery is hazardous, soft-plastic bags jam sorting machines — and one wrong item can contaminate an entire batch. India generates roughly 62 million tonnes of municipal solid waste a year, and much of what could be recycled is lost at the very first step: the household bin.</p>
+    </section>
+    <section class="panel">
+      <div class="panel-head"><h2>How the AI works</h2><p>Two modes, one interface, identical output shape.</p></div>
+      <div class="steps">
+        <div class="step"><b>📷</b><h3>Vision classify</h3><p>Photo in, structured result out: bin, prep, confidence, impact, tip.</p></div>
+        <div class="step"><b>💬</b><h3>Assistant</h3><p>Grounded chat for tricky, contextual questions.</p></div>
+        <div class="step"><b>📚</b><h3>Offline base</h3><p>28-item SWM 2016 knowledge base keeps it free and private.</p></div>
+      </div>
+      <p class="prose">Run offline by opening any page, or start <code>node server.js</code> with an API key for live Claude vision and chat. Stack: vanilla HTML, CSS, and JS front end, zero-dependency Node backend, Anthropic Messages API.</p>
+    </section>
+    <section class="panel">
+      <div class="panel-head"><h2>Responsible AI</h2></div>
+      <ul class="tick-list">
+        <li><b>Transparency:</b> every result shows confidence and its source.</li>
+        <li><b>Fairness:</b> rules follow public SWM 2016 standards, not assumptions about users.</li>
+        <li><b>Honesty:</b> conditional items are flagged check-locally instead of over-claiming.</li>
+        <li><b>Privacy:</b> demo photos stay in-browser, history stays on-device.</li>
+        <li><b>Scope safety:</b> the assistant redirects off-topic questions and avoids medical or legal overreach.</li>
+      </ul>
+    </section>
+    <section class="panel">
+      <div class="panel-head"><h2>Team and links</h2></div>
+      <p class="prose"><b>Sirlapu Tanish</b>, GITAM University, Vizag. 1M1B AI for Sustainability Virtual Internship with IBM SkillsBuild and AICTE. Primary SDG 12, secondary SDG 11 and 13.</p>
+      <p class="prose"><a href="https://github.com/codex-ts/ecosort">Repository</a> · <a href="https://codex-ts.github.io/ecosort/">Live demo</a> · Full write-up in <code>SUBMISSION.md</code>.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div>
+        <h3>EcoSort</h3>
+        <p>AI for Sustainability Virtual Internship.<br /><b>Sirlapu Tanish</b>, GITAM University, Vizag.</p>
+        <nav class="footnav" aria-label="Footer">
+          <a href="index.html">Home</a><a href="classify.html">Classify</a><a href="library.html">Library</a><a href="bins.html">Bins</a><a href="quiz.html">Quiz</a><a href="impact.html">Impact</a><a href="assistant.html">Assistant</a>
+        </nav>
+        <p class="disclaimer">Educational prototype. Rules vary by municipality — always check local guidelines.</p>
+      </div>
+      <div>
+        <h3>Method</h3>
+        <p>Empathise, define, ideate, prototype, test. Key insight: people fail at the first step, the bin — not at the recycling plant.</p>
+      </div>
+    </div>
+    <p class="copyright">Built with responsible AI for the planet. ♻️</p>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="js/knowledge.js"></script>
+  <script src="js/site.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

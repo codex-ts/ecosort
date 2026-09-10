@@ -1,6 +1,6 @@
 /* EcoSort offline cache — static assets only, network-first for APIs */
-const CACHE = "ecosort-v2";
-const ASSETS = ["./", "./index.html", "./css/styles.css", "./js/knowledge.js", "./js/app.js", "./manifest.json"];
+const CACHE = "ecosort-v3";
+const ASSETS = ["./", "./index.html", "./classify.html", "./library.html", "./bins.html", "./quiz.html", "./impact.html", "./assistant.html", "./about.html", "./css/styles.css", "./js/knowledge.js", "./js/site.js", "./js/app.js", "./manifest.json"];
 self.addEventListener("install", (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(ASSETS)).then(() => self.skipWaiting()));
 });

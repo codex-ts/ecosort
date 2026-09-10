@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bin Guide — EcoSort</title>
+  <meta name="description" content="The 4-bin SWM 2016 guide: what goes where, plus dos and don'ts." />
+  <meta name="theme-color" content="#0f5c2c" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♻️</text></svg>" />
+</head>
+<body data-page="bins">
+  <header class="site-header">
+    <a class="brand brand-link" href="index.html">
+      <span class="brand-mark">♻️</span>
+      <span><span class="brand-name">EcoSort</span><span class="brand-sub">AI Waste Segregation Assistant</span></span>
+    </a>
+    <nav class="topnav" aria-label="Sections">
+      <a data-nav="home" href="index.html">Home</a>
+      <a data-nav="classify" href="classify.html">Classify</a>
+      <a data-nav="library" href="library.html">Library</a>
+      <a data-nav="bins" href="bins.html">Bins</a>
+      <a data-nav="quiz" href="quiz.html">Quiz</a>
+      <a data-nav="impact" href="impact.html">Impact</a>
+      <a data-nav="assistant" href="assistant.html">Assistant</a>
+      <a data-nav="about" href="about.html">About</a>
+    </nav>
+    <div class="header-right">
+      <span class="sdg-chip">SDG 12 · Responsible Consumption</span>
+      <button id="themeBtn" class="icon-btn" title="Toggle dark mode" aria-label="Toggle dark mode">🌙</button>
+      <span id="modeBadge" class="mode-badge mode-demo" title="Click to learn about AI modes">Demo&nbsp;Mode</span>
+    </div>
+  </header>
+
+  <main class="container page">
+    <p class="crumbs"><a href="index.html">Home</a> / Bins</p>
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Bin guide — SWM 2016</h2>
+        <p>Four streams. If in doubt, keep hazardous separate and keep dry waste clean and dry.</p>
+      </div>
+      <div id="binGrid" class="bin-grid"></div>
+    </section>
+    <section class="panel">
+      <div class="panel-head"><h2>Dos and don'ts</h2><p>The five rules that prevent most contamination.</p></div>
+      <div id="dosDonts" class="dd-grid"></div>
+    </section>
+    <section class="panel">
+      <div class="panel-head"><h2>Why segregation at source matters</h2></div>
+      <p class="prose">India generates roughly 62 million tonnes of municipal solid waste a year. Mixed recycling streams commonly run 15 to 25 percent contamination, and one greasy box, battery, or soft-plastic bag can send an entire batch to landfill. Sorting at the bin is the cheapest, highest-leverage step in the whole system — it keeps recyclables valuable, organics compostable, and waste pickers safe.</p>
+      <p class="prose"><a href="classify.html">Sort your first item →</a> · <a href="library.html">Browse the library →</a></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div>
+        <h3>EcoSort</h3>
+        <p>AI for Sustainability Virtual Internship.<br /><b>Sirlapu Tanish</b>, GITAM University, Vizag.</p>
+        <nav class="footnav" aria-label="Footer">
+          <a href="index.html">Home</a><a href="classify.html">Classify</a><a href="library.html">Library</a><a href="quiz.html">Quiz</a><a href="impact.html">Impact</a><a href="assistant.html">Assistant</a><a href="about.html">About</a>
+        </nav>
+      </div>
+      <div>
+        <h3>Standard</h3>
+        <p>Bin colours follow India's Solid Waste Management Rules 2016. Local municipalities may differ — conditional items say check locally.</p>
+      </div>
+    </div>
+    <p class="copyright">Built with responsible AI for the planet. ♻️</p>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="js/knowledge.js"></script>
+  <script src="js/site.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
