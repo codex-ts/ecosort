@@ -22,9 +22,12 @@ in, how to prepare it, and the impact of getting it right.**
 | 📷 **Photo classify** | Snap/upload a waste item → get its category, correct bin, prep steps, decomposition time & impact | Multimodal **vision classification** |
 | 🧠 **Knowledge result card** | Transparent output with **confidence score** and **source** label | Structured, explainable output |
 | 💬 **Recycling assistant** | Conversational AI for tricky cases ("greasy pizza box?", "old medicines?") | **Conversational AI** grounded in a waste KB |
-| 🌍 **Impact tracker** | Honest, clearly-estimated CO₂ avoided per session | Behavioural nudge |
+| 🌍 **Impact tracker** | Honest, clearly-estimated CO₂ avoided, levels, history, export | Behavioural nudge |
+| 🔍 **Library + search** | 28-item guide with search and outcome filters | Instant lookup |
+| 🧪 **Quiz** | 5-question tricky-item quiz for demos | Engagement |
+| 📦 **Bin guide** | 4-bin SWM 2016 visual guide | Education |
 
-13 waste types, bin logic based on **India's Solid Waste Management Rules 2016**
+28 waste types, bin logic based on **India's Solid Waste Management Rules 2016**
 (Green = wet · Blue = dry/recyclable · Red/Hazardous · dedicated E-waste).
 
 ---
@@ -105,11 +108,14 @@ design-thinking process, impact statement).
 
 ## 📁 Structure
 ```
-index.html         landing + classifier + chat + impact UI
-css/styles.css     eco-themed styling
-js/knowledge.js    waste knowledge base (powers demo mode)
-js/app.js          classifier, chat engine, mode detection
-server.js          optional Node backend for real Claude AI
+index.html         landing + classifier + library + bins + quiz + chat + impact UI
+css/styles.css     eco-themed styling + dark mode
+js/knowledge.js    28-item knowledge base + BIN_GUIDE + QUIZ (powers demo mode)
+js/app.js          classifier, search, library, quiz, chat, impact with localStorage
+server.js          optional Node backend for real Claude AI (rate-limited, validated)
+manifest.json      PWA manifest
+sw.js              offline cache for static assets
+REVIEW_GUIDE.md    5-minute review demo script
 docs/              screenshots
 SUBMISSION.md      formal internship deliverable
 ```
